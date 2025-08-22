@@ -8,3 +8,6 @@ langgraph-cli
 langgraph-cli[inmem]
 requests
 supabase
+pika
+Pillow
+openai

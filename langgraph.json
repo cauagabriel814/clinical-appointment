@@ -1,0 +1,7 @@
+{
+    "dependencies": ["."],
+    "graphs":{
+        "comeco_agent": "main:app"
+    }
+
+}

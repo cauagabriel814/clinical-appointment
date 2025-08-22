@@ -1,4 +1,4 @@
-from monitore_queues import monitor_rabbitmq_queue
+from services.monitore_queues import monitor_rabbitmq_queue
 import json
 import traceback
 
@@ -18,7 +18,6 @@ class ProcessingFile():
             print(f'Erro ao converter arquivo json: {e}')
             return None
         
-        print(json.dumps(object_webhook, indent= 4, ensure_ascii= False))
         try: 
             conversation = object_webhook['body']['data']["message"].get("conversation")
             audio_message = object_webhook['body']['data']["message"].get("audioMessage")
@@ -32,7 +31,7 @@ class ProcessingFile():
                 }
             elif audio_message is not None: 
                 useful_variables = {
-                    'mensagem_Audio': True,
+                    'mensagem_audio': True,
                     'telefone': object_webhook['body']['data']['key']['remoteJid'],
                     'chatwoot_id':object_webhook['body']['data']['chatwootConversationId'],
                     'mensagem' : object_webhook['body']['data']["message"]["base64"],
@@ -46,6 +45,7 @@ class ProcessingFile():
                     'mensagem' : object_webhook['body']['data']["message"]["base64"],
                     'fromMe' :  object_webhook['body']['data']['key']['fromMe']
                     }
+
 
         except Exception as e:
             print('Deu erro ',e)
